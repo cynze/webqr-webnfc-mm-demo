@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>
+      WebQR
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-button expand="block" type="button" (click)="navigateToGenerator()">
+    <ion-icon name="qr-code"></ion-icon>
+  </ion-button>
+
+  <ion-button expand="block" type="button" (click)="listCamera()" [class.button-disabled]="(showStopButton$ | async)">
+    <ion-icon name="camera"></ion-icon>
+  </ion-button>
+
+<!--  <ion-button *ngIf="(showStopButton$|async)" expand="block" type="button" color="danger" (click)="setHideCamera(true)">-->
+<!--    <ion-icon name="stop"></ion-icon>-->
+<!--  </ion-button>-->
+
+<!--  <div *ngIf="(hideCamera$|async) === false" id="reader"></div>-->
+
+<!--  <app-media *ngIf="((showStopButton$|async) === false) && scannedValue$"-->
+<!--             [mediaId$]="scannedValue$"-->
+<!--  ></app-media>-->
+
+</ion-content>

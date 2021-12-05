@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="nfc"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>NFC Writer</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-item>
+    <ion-label position="floating">NFC Value</ion-label>
+    <ion-input [(ngModel)]="value" clearInput></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" type="button" (click)="checkValue()"
+              [class.button-disabled]="(started$ | async) || (writeStarted$ | async)">
+    <ion-icon name="create"></ion-icon>
+  </ion-button>
+  <ion-button expand="block" type="button" (click)="onScanMessage()"
+              [class.button-disabled]="(started$ | async) || (writeStarted$ | async)">
+    <ion-icon name="radio"></ion-icon>
+    <ion-icon name="mail-open"></ion-icon>
+  </ion-button>
+
+  <ion-item color="success" *ngIf="writeStarted$ | async">
+    <ion-label>
+      looking for NFC tag to write
+    </ion-label>
+  </ion-item>
+
+  <ion-item color="success" *ngIf="started$ | async">
+    <ion-label>
+      scan started successfully, looking for NFC tag
+    </ion-label>
+  </ion-item>
+
+  <ion-item color="warning" *ngIf="notCompatible$ | async">
+    <ion-label>
+      device not compatible with WebNFC API :(
+    </ion-label>
+  </ion-item>
+
+  <app-media *ngIf="(started$ | async) === false && (writeStarted$ | async) === false && (showMedia$ | async)"
+             [mediaId$]="mediaId$">
+  </app-media>
+
+</ion-content>

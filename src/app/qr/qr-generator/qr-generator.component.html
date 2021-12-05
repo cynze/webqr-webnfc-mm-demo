@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="qr"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>
+      QR Code Generator
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item>
+    <ion-label position="floating">QR Code Value</ion-label>
+    <ion-input [(ngModel)]="value" clearInput ></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" type="button" (click)="checkValue()">
+    <ion-icon name="chevron-down"></ion-icon>
+  </ion-button>
+
+  <div class="square" #qrcode *ngIf="(showCode$|async)"></div>
+
+</ion-content>

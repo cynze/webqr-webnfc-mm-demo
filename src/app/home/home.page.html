@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Welcome</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>WebQR and WebNFC</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      This is a multimedia demo app with WebQR and WebNFC!
+      Tap the camera button and scan the appropriate QR code to use one of these services.
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" type="button" (click)="listCamera()" [class.button-disabled]="(showStopButton$ | async)">
+    <ion-icon name="camera"></ion-icon>
+  </ion-button>
+
+  <ion-button *ngIf="(showStopButton$|async)" expand="block" type="button" color="danger" (click)="setHideCamera(true)">
+    <ion-icon name="stop"></ion-icon>
+  </ion-button>
+
+  <div *ngIf="(hideCamera$|async) === false" id="home-qr-reader"></div>
+
+  <div *ngIf="(scannedValue$ | async)">
+    <ion-card>
+      <ion-card-content>
+        scanned value: {{ scannedValue$ | async }}
+      </ion-card-content>
+    </ion-card>
+
+    <ion-item color="warning">
+      <ion-label>
+        scan either "WebQR" or "WebNFC"
+      </ion-label>
+    </ion-item>
+  </div>
+
+
+</ion-content>

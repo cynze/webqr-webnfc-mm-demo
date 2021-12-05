@@ -1,0 +1,19 @@
+<div>
+  <img class="center" *ngIf="(image | async)" src="{{(image | async)?.url}}" alt="image">
+
+  <video class="library center" controls preload="auto" *ngIf="(video | async)">
+    <source src="{{(video | async)?.url}}" type='video/mp4'>
+  </video>
+
+  <audio class="center" controls *ngIf="(audio | async)">
+    <source src="{{(audio | async)?.url}}" type="audio/mpeg">
+  </audio>
+
+  <div *ngIf="(mediaId$ | async)">
+    <ion-card>
+      <ion-card-content>
+        scanned value: {{ mediaId$ | async }}
+      </ion-card-content>
+    </ion-card>
+  </div>
+</div>

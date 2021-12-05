@@ -1,0 +1,7 @@
+{
+  "name": "zeya-selected-topics",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
