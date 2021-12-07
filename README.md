@@ -8,6 +8,7 @@ To get a local copy up and running follow these simple steps.
 * [Download the installer](https://nodejs.org/) for Node LTS.
 * Clone this repository: `git clone https://github.com/cynze/webqr-webnfc-mm-demo.git`.
 * Install the ionic CLI globally: `npm install -g @ionic/cli`
+* Run `npm install` from the project root.
 * Run `ionic serve` in a terminal from the project root.
 <!-- Libraries -->
 ## Libraries
